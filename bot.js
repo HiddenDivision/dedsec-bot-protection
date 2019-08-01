@@ -7,9 +7,9 @@ const testpre = '-';
 
 bot.on('ready', () =>{
 	console.log('Online.');
-	var Channel = bot.channels.get("601423369883222016");
-	Channel.fetchMessage("601423653724225536");
-	bot.user.setActivity('you getting killed.', { type: ('WATCHING')})
+	var Channel = bot.channels.get("606542102272278664");
+	Channel.fetchMessage("606543035584479256");
+	bot.user.setActivity('you getting hacked.', { type: ('WATCHING')})
 })
 
 bot.on('raw', event =>{
@@ -17,7 +17,7 @@ bot.on('raw', event =>{
 	if(eventname === 'MESSAGE_REACTION_ADD')
 	{
 		var reactionChannel = bot.channels.get(event.d.channel_id);
-		if(event.d.message_id === '601423653724225536')
+		if(event.d.message_id === '606543035584479256')
 		{
 			reactionChannel.fetchMessage(event.d.message_id)
 			.then(msg => {
@@ -39,30 +39,34 @@ bot.on('raw', event =>{
 
 bot.on('messageReactionAdd', (messageReaction, user) =>{
 	var roleName = messageReaction.emoji.name
-	var role = messageReaction.message.guild.roles.find(role => role.name.toLowerCase() === roleName.toLowerCase());
+	var role = messageReaction.message.guild.roles.find("name", "Unverified");
+	var role2 = messageReaction.message.guild.roles.find("name", "Default");
 	console.log(roleName)
 	var member = messageReaction.message.guild.members.find(member => member.id === user.id);
 	if(member)
 	{
-		member.addRole(role.id)
-		console.log("Success.")
+		if(roleName === 'Verified'){
+			member.removeRole(role.id)
+			member.addRole(role2.id)
+			console.log("Success.")
+		}
 	}
 })
 
 bot.on('guildMemberAdd', member =>{
 
-	const channel = member.guild.channels.find(channel => channel.name === "𝔚𝔢𝔩𝔠𝔬𝔪𝔢");
+	const channel = member.guild.channels.find(channel => channel.name === "welcome");
 	if(!channel) return;
-	let role = member.guild.roles.find("name", "𝔊𝔲𝔢𝔰𝔱𝔰");
+	let role = member.guild.roles.find("name", "Unverified");
 	member.addRole(role.id);
-	channel.sendMessage(`Welcome in 〷 𝔅𝔬𝔯𝔫 𝔎𝔦𝔩𝔩𝔢𝔯𝔰 𝔓𝔲𝔟𝔩𝔦𝔠 〷, ${member}.`);
+	channel.sendMessage(`Welcome in Dedsec, ${member}.`);
 })
 
 bot.on('guildMemberRemove', member =>{
 
 	const channel = member.guild.channels.find(channel => channel.name === "𝔚𝔢𝔩𝔠𝔬𝔪𝔢");
 	if(!channel) return;
-	channel.sendMessage(`${member} got killed. We will see you at the graveyard.`)
+	channel.sendMessage(`${member} got hacked. We will see you at the graveyard.`)
 })
 
 bot.on('message', msg=>{
@@ -137,10 +141,10 @@ bot.on('message', msg=>{
 		break;
 		case '-iregards':
 			mention = msg.mentions.users.first();
-			if(!msg.author.id === '333357946744602647') return msg.channel.sendMessage("You are not the leader. You can't do that.");
+			if(!msg.author.id === '599661787608121375') return msg.channel.sendMessage("You are not the leader. You can't do that.");
 			if(!args[1]) return msg.channel.sendMessage('Who are you trying to send your regards?')
-			const regard = new Attachment('https://cdn.discordapp.com/attachments/598945838646951956/600162120998322178/BORN_KILLERS.gif')
-			mention.sendMessage('𝔅𝔬𝔯𝔫 𝔎𝔦𝔩𝔩𝔢𝔯𝔰 sends their regards.');
+			const regard = new Attachment('https://cdn.discordapp.com/attachments/606307937320697856/606316960854048781/1485917459_tumblr_oitiv5ltbd1w0eey6o1_500.gif')
+			mention.sendMessage('Dedsec sends their regards.');
 			mention.sendMessage(regard);
 			msg.channel.bulkDelete(1);
 		break;
@@ -151,7 +155,7 @@ bot.on('message', msg=>{
 			const aMessage = args.join(" ").slice(14);
 			const achannel = bot.channels.find(channel => channel.name === "𝔄𝔫𝔫𝔬𝔲𝔫𝔠𝔢𝔪𝔢𝔫𝔱𝔰");
 			const aAuthor = msg.author.username
-			const agif = new Attachment('https://cdn.discordapp.com/attachments/598945838646951956/600162120998322178/BORN_KILLERS.gif');
+			const agif = new Attachment('https://cdn.discordapp.com/attachments/606307937320697856/606316960854048781/1485917459_tumblr_oitiv5ltbd1w0eey6o1_500.gif');
 			if(!achannel) return;
 			msg.channel.bulkDelete(1);
 			achannel.sendMessage('@everyone \n \n' + aMessage + '\n \n' + 'Announcement made by ' + aAuthor + '.')
@@ -225,31 +229,6 @@ bot.on('message', msg=>{
 			const uembed = new RichEmbed()
 			.setTitle('User has been unbanned!')
 			msg.channel.sendEmbed(uembed);
-		break;
-		case '​dmallthosenigsbciwant':
-			if(!msg.author.id === '333357946744602647') return msg.channel.sendMessage("You are not the leader. You can't do that.");
-			if(!args[1]) return msg.channel.sendMessage('?');
-			let dmGuild = msg.guild;
-			var message = msg.content.slice(22);
-			let memberarray = dmGuild.members.array();
-			let membercount = memberarray.length;
-			const regard2 = new Attachment('https://media.discordapp.net/attachments/572096391149649920/572508265506668556/Hidden_Division.gif')
-			console.log(`Responding to ${msg.author.username} :  Sending message to all ${membercount} members of ${dmGuild.name}.`)
-			for (var i = 0; i < membercount; i++) {
-				if(!msg.author.id === '333357946744602647') return msg.channel.sendMessage("You are not the leader. You can't do that.");
-				if(!args[1]) return msg.channel.sendMessage('?');
-				if(!msg.author.id === '333357946744602647') return msg.channel.sendMessage("You are not the leader. You can't do that.");
-				let timeout = Math.floor((Math.random() * (10 - 0.01)) * 1000) + 10;
-				let member = memberarray[i];
-				sleep(timeout)
-				if(i == (membercount-1)) {
-					console.log(`Waited ${timeout}ms.\t\\/\tDMing ${member.user.username}`);
-				} else {
-					console.log(`Waited ${timeout}ms.\t|${i + 1}|\tDMing ${member.user.username}`);
-				}
-				member.send(`${message}`);
-			}
-			
 		break;
 	}
 })
