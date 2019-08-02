@@ -66,7 +66,7 @@ bot.on('guildMemberRemove', member =>{
 
 	const channel = member.guild.channels.find(channel => channel.name === "welcome");
 	if(!channel) return;
-	channel.sendMessage(`${member} got hacked. We will see you at the graveyard.`)
+	channel.sendMessage(`${member} got hacked. Dedsec sends their regards to you.`)
 })
 
 bot.on('message', msg=>{
