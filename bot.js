@@ -153,7 +153,7 @@ bot.on('message', msg=>{
 			if(!msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.sendMessage("You don't have the permission to make an announcement!");
 			if(!msg.guild.me.hasPermission("ADMINISTRATOR")) return msg.channel.sendMessage("I don't have the allowed permission to make an announcement!");
 			const aMessage = args.join(" ").slice(14);
-			const achannel = bot.channels.find(channel => channel.name === "𝔄𝔫𝔫𝔬𝔲𝔫𝔠𝔢𝔪𝔢𝔫𝔱𝔰");
+			const achannel = bot.channels.find(channel => channel.name === "announcements");
 			const aAuthor = msg.author.username
 			const agif = new Attachment('https://cdn.discordapp.com/attachments/606307937320697856/606316960854048781/1485917459_tumblr_oitiv5ltbd1w0eey6o1_500.gif');
 			if(!achannel) return;
