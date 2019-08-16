@@ -7,8 +7,8 @@ const testpre = '-';
 
 bot.on('ready', () =>{
 	console.log('Online.');
-	var Channel = bot.channels.get("606542102272278664");
-	Channel.fetchMessage("606543035584479256");
+	var Channel = bot.channels.get("612022223317893120");
+	Channel.fetchMessage("612022526851153922");
 	bot.user.setActivity('you getting hacked.', { type: ('WATCHING')})
 })
 
@@ -17,7 +17,7 @@ bot.on('raw', event =>{
 	if(eventname === 'MESSAGE_REACTION_ADD')
 	{
 		var reactionChannel = bot.channels.get(event.d.channel_id);
-		if(event.d.message_id === '606543035584479256')
+		if(event.d.message_id === '612022526851153922')
 		{
 			reactionChannel.fetchMessage(event.d.message_id)
 			.then(msg => {
